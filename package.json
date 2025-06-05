@@ -1,6 +1,6 @@
 {
   "name": "serverlog-to-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exports": {
     "./server": {
       "import": "./dist/server/index.mjs",
