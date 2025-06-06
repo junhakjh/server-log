@@ -15,7 +15,17 @@
     "type": "git",
     "url": "git+https://github.com/junhakjh/server-log.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "nextjs",
+    "front-end",
+    "web",
+    "server",
+    "browser",
+    "client",
+    "log",
+    "server-log"
+  ],
   "author": "junhakjh",
   "license": "MIT",
   "bugs": {
