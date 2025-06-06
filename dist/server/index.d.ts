@@ -1,6 +1,13 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 
 type Props = {
+    /**
+     * Timeout (in milliseconds) to wait before injecting logs into the HTML.
+     *
+     * This delay ensures all server-side logs are collected before rendering.
+     *
+     * default: `500ms`
+     */
     timeout?: number;
 };
 declare function LogScript({ timeout }: Props): react_jsx_runtime.JSX.Element;
