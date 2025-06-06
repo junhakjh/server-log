@@ -1,2 +1,2 @@
-export * from './LogScript';
+export * from './LogScript.container';
 export * from './serverLogger';

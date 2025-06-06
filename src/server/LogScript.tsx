@@ -1,6 +1,11 @@
 import { flushLogs } from '../shared/logBuffer';
 
-export async function LogScript() {
+type Props = {
+  timeout: number;
+};
+
+export async function LogScript({ timeout }: Props) {
+  await new Promise((resolve) => setTimeout(resolve, timeout));
   const logs = flushLogs();
 
   return (

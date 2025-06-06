@@ -1,9 +1,9 @@
 import { stringify } from 'flatted';
 import { pushLog } from '../shared/logBuffer';
 
-function serialize(args: any[]) {
+const serialize = (args: any[]) => {
   return stringify(args);
-}
+};
 
 export const serverLog = (...args: any[]) => pushLog('log', serialize(args));
 export const serverDir = (...args: any[]) => pushLog('dir', serialize(args));
