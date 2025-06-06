@@ -20,7 +20,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/server/index.ts
 var index_exports = {};
 __export(index_exports, {
-  LogScript: () => LogScript,
+  LogScript: () => LogScript2,
   serverDebug: () => serverDebug,
   serverDir: () => serverDir,
   serverError: () => serverError,
@@ -30,20 +30,24 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
+// src/server/LogScript.container.tsx
+var import_react = require("react");
+
 // src/shared/logBuffer.ts
 var logs = [];
-function pushLog(level, message) {
+var pushLog = (level, message) => {
   logs.push({ level, message });
-}
-function flushLogs() {
+};
+var flushLogs = () => {
   const flushed = [...logs];
   logs = [];
   return flushed;
-}
+};
 
 // src/server/LogScript.tsx
 var import_jsx_runtime = require("react/jsx-runtime");
-async function LogScript() {
+async function LogScript({ timeout }) {
+  await new Promise((resolve) => setTimeout(resolve, timeout));
   const logs2 = flushLogs();
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "script",
@@ -56,11 +60,17 @@ async function LogScript() {
   );
 }
 
+// src/server/LogScript.container.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+function LogScript2({ timeout = 500 }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react.Suspense, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(LogScript, { timeout }) });
+}
+
 // src/server/serverLogger.ts
 var import_flatted = require("flatted");
-function serialize(args) {
+var serialize = (args) => {
   return (0, import_flatted.stringify)(args);
-}
+};
 var serverLog = (...args) => pushLog("log", serialize(args));
 var serverDir = (...args) => pushLog("dir", serialize(args));
 var serverDebug = (...args) => pushLog("debug", serialize(args));

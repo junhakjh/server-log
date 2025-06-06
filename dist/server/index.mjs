@@ -1,17 +1,21 @@
+// src/server/LogScript.container.tsx
+import { Suspense } from "react";
+
 // src/shared/logBuffer.ts
 var logs = [];
-function pushLog(level, message) {
+var pushLog = (level, message) => {
   logs.push({ level, message });
-}
-function flushLogs() {
+};
+var flushLogs = () => {
   const flushed = [...logs];
   logs = [];
   return flushed;
-}
+};
 
 // src/server/LogScript.tsx
 import { jsx } from "react/jsx-runtime";
-async function LogScript() {
+async function LogScript({ timeout }) {
+  await new Promise((resolve) => setTimeout(resolve, timeout));
   const logs2 = flushLogs();
   return /* @__PURE__ */ jsx(
     "script",
@@ -24,11 +28,17 @@ async function LogScript() {
   );
 }
 
+// src/server/LogScript.container.tsx
+import { jsx as jsx2 } from "react/jsx-runtime";
+function LogScript2({ timeout = 500 }) {
+  return /* @__PURE__ */ jsx2(Suspense, { children: /* @__PURE__ */ jsx2(LogScript, { timeout }) });
+}
+
 // src/server/serverLogger.ts
 import { stringify } from "flatted";
-function serialize(args) {
+var serialize = (args) => {
   return stringify(args);
-}
+};
 var serverLog = (...args) => pushLog("log", serialize(args));
 var serverDir = (...args) => pushLog("dir", serialize(args));
 var serverDebug = (...args) => pushLog("debug", serialize(args));
@@ -36,7 +46,7 @@ var serverInfo = (...args) => pushLog("info", serialize(args));
 var serverWarn = (...args) => pushLog("warn", serialize(args));
 var serverError = (...args) => pushLog("error", serialize(args));
 export {
-  LogScript,
+  LogScript2 as LogScript,
   serverDebug,
   serverDir,
   serverError,

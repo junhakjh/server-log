@@ -1,6 +1,9 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 
-declare function LogScript(): Promise<react_jsx_runtime.JSX.Element>;
+type Props = {
+    timeout?: number;
+};
+declare function LogScript({ timeout }: Props): react_jsx_runtime.JSX.Element;
 
 declare const serverLog: (...args: any[]) => void;
 declare const serverDir: (...args: any[]) => void;
