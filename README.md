@@ -58,6 +58,21 @@ serverDir('This will be sent to the client console');
 serverError('This error will show up as a red message');
 ```
 
+## 🧾 Logging Methods
+
+The library provides several server-side logging functions that mirror browser console methods. These methods inject logs into HTML during SSR (server-side rendering), allowing the client browser to display them in the developer console.
+
+| **Function**  | **Log Level** | **Console Method on Client** | **Description**                                                                |
+| ------------- | ------------- | ---------------------------- | ------------------------------------------------------------------------------ |
+| `serverLog`   | `log`         | `console.log`                | General purpose logging. Use for standard output or debugging.                 |
+| `serverDebug` | `debug`       | `console.debug`              | Detailed debug messages. Not shown in some browsers unless devtools are open.  |
+| `serverInfo`  | `info`        | `console.info`               | Informational messages, often highlighted with an info icon.                   |
+| `serverWarn`  | `warn`        | `console.warn`               | Warning messages. Rendered with yellow highlight in most browsers.             |
+| `serverError` | `error`       | `console.error`              | Error messages. Rendered with red highlight, used for exceptions or failures.  |
+| `serverDir`   | `dir`         | `console.dir`                | Displays objects as an interactive tree. Useful for inspecting data structure. |
+
+> These methods are only injected in development mode to avoid polluting production output.
+
 ## 🧪 Development
 
 This library uses tsup for bundling and supports both CommonJS and ES Module formats.
