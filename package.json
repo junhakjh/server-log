@@ -26,16 +26,16 @@
     "log",
     "server-log"
   ],
-  "author": "junhakjh",
+  "author": "junhakjh <junhakjh@ajou.ac.kr>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/junhakjh/server-log/issues"
   },
   "homepage": "https://github.com/junhakjh/server-log#readme",
-  "description": "",
+  "description": "A real-time logging library for server-side and client-side logs, supporting log levels (log, dir, debug, info, warn, error) and development mode logging. It enables seamless integration with Next.js, embedding server logs in HTML and providing console output on the client side.",
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "scripts": {
     "build": "tsup"
