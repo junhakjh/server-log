@@ -4,11 +4,11 @@
   "exports": {
     "./server": {
       "import": "./dist/server/index.mjs",
-      "require": "./dist/server/index.cjs"
+      "require": "./dist/server/index.js"
     },
     "./client": {
       "import": "./dist/client/index.mjs",
-      "require": "./dist/client/index.cjs"
+      "require": "./dist/client/index.js"
     }
   },
   "repository": {
